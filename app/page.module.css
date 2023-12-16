@@ -1,0 +1,26 @@
+.page {
+  background-image: url('/page-bg.png');
+  background-size: cover;
+  flex: 1;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+
+  > .main {
+    position: absolute;
+    top: 22rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    > .heading {
+      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
