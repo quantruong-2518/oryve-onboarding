@@ -1,0 +1,77 @@
+@import "/assets/scss/mixins.module.scss";
+
+.page {
+  background-image: url("/page-bg.png");
+  background-size: cover;
+  flex: 1;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+
+  > .way-1 {
+    width: 75vw;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    animation: rotate 10s linear infinite;
+
+    @include breakpoint(md) {
+      width: 400px;
+    }
+  }
+
+  > .way-2 {
+    width: 75vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    object-fit: contain;
+    position: absolute;
+    animation: rotate 11s linear infinite;
+
+    @include breakpoint(md) {
+      width: 400px;
+    }
+  }
+
+  > .way-3 {
+    width: 75vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    object-fit: contain;
+    position: absolute;
+    animation: rotate 12s linear infinite;
+
+    @include breakpoint(md) {
+      width: 400px;
+    }
+  }
+
+  > .logo {
+    width: 65vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    object-fit: contain;
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    @include breakpoint(md) {
+      width: 350px;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

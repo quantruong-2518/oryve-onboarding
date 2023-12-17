@@ -2,53 +2,118 @@
 
 import Image from 'next/image';
 import { useCallback } from 'react';
-import { Box, Button, FormControl, InputAdornment, OutlinedInput, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  InputAdornment,
+  OutlinedInput,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { useRouter } from 'next/navigation';
-import styles from './page.module.css';
+import styles from './page.module.scss';
 
 export default function Home() {
   const router = useRouter();
+  const theme = useTheme();
+  const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
 
   const MainContent = useCallback(() => {
     return (
       <Box className={styles.main}>
-        <Box className={styles['heading']}>
-          <Typography color="white" fontSize="2.5rem">
+        <Box
+          sx={{
+            width: {
+              xs: 'max-content',
+              md: 'unset',
+            },
+          }}
+          className={styles['heading']}
+        >
+          <Typography
+            color="white"
+            sx={{
+              fontSize: {
+                xs: '1.5rem',
+                md: '2.5rem',
+              },
+            }}
+          >
             Create your digital business
           </Typography>
-          <Typography color="primary" fontSize="2.5rem">
+          <Typography
+            color="primary"
+            sx={{
+              fontSize: {
+                xs: '1.5rem',
+                md: '2.5rem',
+              },
+            }}
+            fontSize="2.5rem"
+          >
             in CYPRUS
           </Typography>
         </Box>
 
-        <Typography fontSize="0.875rem" color="#cfcfcf">
+        <Typography
+          sx={{
+            fontSize: {
+              xs: '0.675rem',
+              md: '0.875rem',
+            },
+          }}
+          color="#cfcfcf"
+        >
           Company formation Service to grow your individual Freedom
         </Typography>
 
-        <FormControl variant="filled">
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <OutlinedInput
-            sx={{ backgroundColor: 'white', width: '32rem' }}
+            size={isMobileBreakPoint ? 'small' : 'medium'}
+            sx={{
+              backgroundColor: 'white',
+              width: {
+                xs: 'calc(100vw - 4rem)',
+                md: '32vw',
+              },
+            }}
             color="info"
             id="filled-adornment-availability"
             placeholder="Enter your business name here"
             endAdornment={
-              <InputAdornment position="end">
-                <Button
-                  onClick={() => router.push('/check-availability')}
-                  sx={{ color: 'white' }}
-                  variant="contained"
-                  size="small"
-                  color="secondary"
-                >
-                  Check Availability
-                </Button>
-              </InputAdornment>
+              !isMobileBreakPoint && (
+                <InputAdornment position="start">
+                  <Button
+                    onClick={() => router.push('/check-availability')}
+                    sx={{
+                      color: 'white',
+                    }}
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                  >
+                    Check Availability
+                  </Button>
+                </InputAdornment>
+              )
             }
           />
-        </FormControl>
+          {!!isMobileBreakPoint && (
+            <Button
+              onClick={() => router.push('/check-availability')}
+              sx={{ color: 'white' }}
+              variant="contained"
+              size="small"
+              color="secondary"
+            >
+              Check Availability
+            </Button>
+          )}
+        </Box>
       </Box>
     );
-  }, []);
+  }, [isMobileBreakPoint]);
 
   return (
     <main className={styles.page}>
