@@ -8,6 +8,12 @@
     @extend .absolute-main-content;
     width: 100vw;
     overflow: auto;
+    top: 4rem;
+    max-height: calc(100vh);
+
+    @include breakpoint(md) {
+      top: 0 !important;
+    }
 
     > .heading {
       font-weight: 700;

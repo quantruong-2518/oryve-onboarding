@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { useCallback } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useRouter, useSearchParams } from 'next/navigation';
+
 import styles from './index.module.scss';
 import ResultToast from './ResultToast';
 import CreationPlan from './CreationPlan';
@@ -11,17 +12,14 @@ import ThemeRegistry from '@/theme/ThemeRegistry';
 import { ButtonCheckAvailability } from '@/app/components';
 
 export default function CheckAvailabilityResult() {
-  const router = useRouter();
+  // ? Hooks
   const theme = useTheme();
   const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
 
   const params = useSearchParams();
   const status = params?.get('status') ?? '';
-  console.log(
-    '🚀 ~ file: index.tsx:20 ~ CheckAvailabilityResult ~ status:',
-    status
-  );
 
+  // ? Inner components
   const Headline = useCallback(
     ({ status }: { status: string }) => {
       return (
@@ -48,7 +46,7 @@ export default function CheckAvailabilityResult() {
             </>
           ) : (
             <Typography
-              variant={isMobileBreakPoint ? 'caption' : 'body1'}
+              variant={isMobileBreakPoint ? 'h6' : 'h5'}
               color="white"
             >
               {`Unfortunately, your business name is not available in CYPRUS, let’s try another one.`}
@@ -62,13 +60,7 @@ export default function CheckAvailabilityResult() {
 
   const MainContent = useCallback(() => {
     return (
-      <Box
-        className={styles.main}
-        sx={{
-          top: '2rem !important',
-          maxHeight: 'calc(100vh)',
-        }}
-      >
+      <Box className={styles.main}>
         <Headline status={status} />
         <ResultToast status={status} />
         {status === 'success' && <CreationPlan />}
