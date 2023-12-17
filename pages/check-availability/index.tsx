@@ -14,7 +14,7 @@ const CheckAvailability = () => {
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      router.push('/check-avail-result');
+      router.push('/check-avail-result?status=success');
     }, 5000);
 
     return () => {

@@ -1,9 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import availabilityCheckedIcon from '../../assets/icons/availability-checked.svg';
+import AvailabilityCheckedIcon from '../../assets/icons/availability-checked.svg';
+import AvailabilityErrorIcon from '../../assets/icons/availability-error.svg';
 
-const ResultToast = () => {
+const ResultToast = ({ status }: { status: string }) => {
   return (
     <Box
       sx={{
@@ -16,13 +17,18 @@ const ResultToast = () => {
         },
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundImage: `linear-gradient(90deg, rgba(2,170,176,0.2945553221288515) 40%, rgba(0,205,172,1) 100%)`,
+        background:
+          status === 'success'
+            ? `linear-gradient(90deg, rgba(2,170,176,0.2945553221288515) 40%, rgba(0,205,172,1) 100%)`
+            : `rgba(237, 66, 30, 0.24)`,
         padding: '0.5rem',
         borderRadius: '0.5rem',
       }}
     >
       <Image
-        src={availabilityCheckedIcon}
+        src={
+          status === 'success' ? AvailabilityCheckedIcon : AvailabilityErrorIcon
+        }
         width={40}
         height={40}
         alt="checked"

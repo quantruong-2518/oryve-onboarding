@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.scss';
+import { ButtonCheckAvailability } from './components';
 
 export default function Home() {
   const router = useRouter();
@@ -68,49 +69,7 @@ export default function Home() {
           Company formation Service to grow your individual Freedom
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <OutlinedInput
-            size={isMobileBreakPoint ? 'small' : 'medium'}
-            sx={{
-              backgroundColor: 'white',
-              width: {
-                xs: 'calc(100vw - 4rem)',
-                md: '32vw',
-              },
-            }}
-            color="info"
-            id="filled-adornment-availability"
-            placeholder="Enter your business name here"
-            endAdornment={
-              !isMobileBreakPoint && (
-                <InputAdornment position="start">
-                  <Button
-                    onClick={() => router.push('/check-availability')}
-                    sx={{
-                      color: 'white',
-                    }}
-                    variant="contained"
-                    size="small"
-                    color="secondary"
-                  >
-                    Check Availability
-                  </Button>
-                </InputAdornment>
-              )
-            }
-          />
-          {!!isMobileBreakPoint && (
-            <Button
-              onClick={() => router.push('/check-availability')}
-              sx={{ color: 'white' }}
-              variant="contained"
-              size="small"
-              color="secondary"
-            >
-              Check Availability
-            </Button>
-          )}
-        </Box>
+        <ButtonCheckAvailability />
       </Box>
     );
   }, [isMobileBreakPoint]);
