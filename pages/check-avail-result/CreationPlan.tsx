@@ -31,10 +31,9 @@ const CreationPlan = () => {
           const isLast = index === options.length - 1;
 
           return (
-            <>
+            <Box key={option}>
               <Box
                 sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}
-                key={option}
               >
                 <CheckCircleOutlinedIcon
                   sx={{ fontSize: '1rem' }}
@@ -46,7 +45,7 @@ const CreationPlan = () => {
               </Box>
 
               {!isLast && <Divider sx={{ border: '1px dashed #cfcfcf' }} />}
-            </>
+            </Box>
           );
         })}
       </Box>
@@ -67,7 +66,7 @@ const CreationPlan = () => {
             border: '2px solid #526B83',
             borderRadius: '0.5rem',
             padding: {
-              sx: '1rem',
+              xs: '1rem',
               md: '2rem',
             },
             display: 'flex',
