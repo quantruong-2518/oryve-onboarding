@@ -2,15 +2,15 @@ import Box from '@mui/material/Box';
 import React, { useCallback } from 'react';
 import Image from 'next/image';
 import { Button, Divider, Typography } from '@mui/material';
-import BusinessPlanIcon from '../../assets/icons/plan-business.svg';
-import PersonalPlanIcon from '../../assets/icons/plan-reserve.svg';
 import { MoneyDisplay } from '@/app/components';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import styles from './index.module.scss';
+import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 
 type TTransparentCardProps = {
   children: React.ReactNode;
-  icon: string;
+  type: 'business' | 'personal';
   title: string;
   price: number;
   options: Array<string>;
@@ -54,7 +54,7 @@ const CreationPlan = () => {
   }, []);
 
   const TransparentCard = useCallback(
-    ({ children, icon, title, price, options }: TTransparentCardProps) => {
+    ({ children, type, title, price, options }: TTransparentCardProps) => {
       return (
         <Box
           sx={{
@@ -76,8 +76,35 @@ const CreationPlan = () => {
             gap: '2rem',
           }}
         >
-          <Box sx={{ display: 'flex', gap: '0.5rem', width: '100%' }}>
-            <Image src={icon} width="100" height="100" alt={`card-trans`} />
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '1rem',
+              width: '100%',
+              alignItems: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                color: 'white',
+                backgroundImage:
+                  'linear-gradient(224.04deg, #FFFFFF -56.66%, rgba(255, 255, 255, 0) 98.07%);',
+                width: '4rem',
+                height: '4rem',
+                borderRadius: '50%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                boxShadow: `0px 15.315589904785156px 51.051963806152344px 0px #0000004D`,
+              }}
+            >
+              {type === 'business' ? (
+                <WorkOutlineOutlinedIcon fontSize="medium" />
+              ) : (
+                <ShieldOutlinedIcon fontSize="medium" />
+              )}
+            </Box>
+
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography variant="body1" color={'white'}>
                 {title}
@@ -100,7 +127,7 @@ const CreationPlan = () => {
   const PersonalPlan = useCallback(() => {
     return (
       <TransparentCard
-        icon={PersonalPlanIcon}
+        type="personal"
         title={'Reserve for 6 months'}
         price={99}
         options={['Name Reservation', 'Cyprus Guide', 'Agent Support']}
@@ -120,7 +147,7 @@ const CreationPlan = () => {
   const BusinessPlan = useCallback(() => {
     return (
       <TransparentCard
-        icon={BusinessPlanIcon}
+        type="business"
         title={'Company formation from'}
         price={1900}
         options={[
