@@ -118,7 +118,7 @@ export default function Home() {
   return (
     <main className={styles.page}>
       <Image
-        style={{ objectFit: 'contain', width: '100vw', height: '100vh' }}
+        className={styles['sub-bg']}
         width={2500}
         height={2500}
         src={`/sub-bg-1.png`}

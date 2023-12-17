@@ -1,20 +1,11 @@
+@import "/assets/scss/mixins.module.scss";
+@import "/assets/scss/base.module.scss";
+
 .page {
-  background-image: url('/page-bg.png');
-  background-size: cover;
-  flex: 1;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
+  @extend .base-screen;
 
   > .main {
-    position: absolute;
-    top: 22rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    @extend .absolute-main-content;
 
     > .heading {
       font-weight: 800;
@@ -22,5 +13,11 @@
       flex-direction: column;
       align-items: center;
     }
+  }
+
+  > .sub-bg {
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
   }
 }

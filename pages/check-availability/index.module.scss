@@ -1,14 +1,8 @@
 @import "/assets/scss/mixins.module.scss";
+@import "/assets/scss/base.module.scss";
 
 .page {
-  background-image: url("/page-bg.png");
-  background-size: cover;
-  flex: 1;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  position: relative;
+  @extend .base-screen;
 
   > .way-1 {
     width: 75vw;
