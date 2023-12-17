@@ -2,13 +2,25 @@
 
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styles from './index.module.scss';
 import ThemeRegistry from '@/theme/ThemeRegistry';
+import { useRouter } from 'next/navigation';
 
 const CheckAvailability = () => {
+  const router = useRouter();
   const theme = useTheme();
   const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      router.push('/check-avail-result');
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, []);
 
   const AnimatedLoading = useCallback(
     () => (
