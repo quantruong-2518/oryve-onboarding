@@ -1,0 +1,33 @@
+@import "/assets/scss/mixins.module.scss";
+@import "/assets/scss/base.module.scss";
+
+.stepper {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+
+  @include breakpoint(md) {
+    width: 40vw;
+  }
+
+  > .step {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    > .line {
+      height: 10px;
+      width: 100%;
+    }
+
+    > .step-name {
+      display: flex;
+      gap: 0.25rem;
+      color: white;
+      align-items: center;
+      justify-items: center;
+    }
+  }
+}

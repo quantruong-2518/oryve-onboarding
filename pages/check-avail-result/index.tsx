@@ -10,6 +10,7 @@ import ResultToast from './ResultToast';
 import CreationPlan from './CreationPlan';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 import { ButtonCheckAvailability } from '@/app/components';
+import Head from 'next/head';
 
 export default function CheckAvailabilityResult() {
   // ? Hooks
@@ -72,6 +73,13 @@ export default function CheckAvailabilityResult() {
   return (
     !!status && (
       <ThemeRegistry>
+        <Head>
+          <title>{`${
+            status === 'failed'
+              ? 'Invalid business name'
+              : 'Available business name'
+          }`}</title>
+        </Head>
         <main className={styles.page}>
           <Image
             className={styles['sub-bg']}

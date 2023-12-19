@@ -24,6 +24,35 @@ const themeOptions: ThemeOptions = {
     secondary: {
       main: '#FFB300',
     },
+    success: {
+      main: '#4BB543',
+    },
+  },
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          background: '#082C4E',
+          borderTop: '2px solid #00CDAC',
+          borderRadius: '0.5rem',
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'rgba(255, 255, 255, 0.24)',
+          },
+          '& .MuiOutlinedInput-input': {
+            color: 'rgba(255, 255, 255, 0.8)',
+          },
+          '& .MuiInputLabel-root': {
+            color: 'rgba(255, 255, 255, 0.5)',
+          },
+        },
+      },
+    },
   },
 };
 
