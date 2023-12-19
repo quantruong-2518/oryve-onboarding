@@ -22,12 +22,10 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import PaymentsIcon from '@mui/icons-material/Payments';
-import {
-  BusinessInfoStep,
-  CompanyPositionStep,
-  SelectPackageStep,
-  PaymentStep,
-} from './components';
+import CompanyPositionStep from './company-position';
+import SelectPackageStep from './select-package';
+import PaymentStep from './payment';
+import BusinessInfoStep from './business-info';
 
 const BusinessPlan = () => {
   // ? Hooks

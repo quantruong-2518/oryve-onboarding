@@ -16,7 +16,7 @@ import {
   Button,
 } from '@mui/material';
 
-export const SelectPackageStep = () => {
+const SelectPackageStep = () => {
   const BasicInfo = useCallback(() => {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -172,3 +172,5 @@ export const SelectPackageStep = () => {
     </>
   );
 };
+
+export default SelectPackageStep;

@@ -14,9 +14,22 @@ import {
   IconButton,
   Divider,
   Button,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 
-export const PaymentStep = () => {
+const BusinessInfoStep = () => {
+  const CYPRUS_BENEFITS = [
+    '12,5 % Income Tax',
+    '0% tax on Dividends',
+    'Business friendly Tax Office',
+    '2,5% tax on Intellectual Property',
+    'Fast growing Business Network',
+  ];
+
+  const theme = useTheme();
+  const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
+
   const BasicInfo = useCallback(() => {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -120,9 +133,86 @@ export const PaymentStep = () => {
     );
   }, []);
 
+  const CyprusBenefits = useCallback(() => {
+    return (
+      <Box
+        sx={{
+          width: {
+            xs: '100%',
+            md: '48%',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
+          <Image
+            style={{
+              objectFit: 'contain',
+              width: '100%',
+              height: 'auto',
+            }}
+            width={1600}
+            height={900}
+            src={'/cyprus-thumb.png'}
+            alt={'cyprus-thumb'}
+          />
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: {
+                sx: 'column',
+                md: 'row',
+              },
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            {CYPRUS_BENEFITS.map((cyprusBenefit, index) => {
+              return (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: {
+                      sx: '0.25rem',
+                      md: '0.5rem',
+                    },
+                    fontSize: '0.75rem',
+                  }}
+                  key={cyprusBenefit}
+                >
+                  <CheckCircleOutlined fontSize="small" color="success" />
+                  <Typography color="white" variant="caption">
+                    {cyprusBenefit}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
+        </Box>
+      </Box>
+    );
+  }, []);
+
   const BusinessForm = useCallback(() => {
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: {
+            xs: '100%',
+            md: '48%',
+          },
+        }}
+      >
         <Typography variant="h6" color="white">
           Alright, let’s start with some basic information.
         </Typography>
@@ -132,16 +222,16 @@ export const PaymentStep = () => {
           <Divider sx={{ border: '1px dashed rgba(255, 255, 255, 0.25)' }} />
           <ServiceInfo />
         </Box>
+        {!isMobileBreakPoint && <Footer />}
       </Box>
     );
-  }, []);
+  }, [isMobileBreakPoint]);
 
   const Footer = useCallback(() => {
     return (
       <Box
         sx={{
-          width: '100vw',
-          padding: '0 1rem',
+          flexFlow: 1,
           display: 'flex',
           flexDirection: 'column',
           gap: '0.5rem',
@@ -153,6 +243,7 @@ export const PaymentStep = () => {
           sx={{ color: 'white' }}
           variant="contained"
           color="secondary"
+          size={isMobileBreakPoint ? 'medium' : 'large'}
         >
           Continue
         </Button>
@@ -167,8 +258,24 @@ export const PaymentStep = () => {
 
   return (
     <>
-      <BusinessForm></BusinessForm>
-      <Footer />
+      <Box
+        sx={{
+          display: 'flex',
+          padding: '1rem 0',
+          flexDirection: {
+            xs: 'column',
+            md: 'row',
+          },
+          gap: '2rem',
+          justifyContent: 'space-between',
+        }}
+      >
+        <BusinessForm></BusinessForm>
+        <CyprusBenefits />
+        {!!isMobileBreakPoint && <Footer />}
+      </Box>
     </>
   );
 };
+
+export default BusinessInfoStep;

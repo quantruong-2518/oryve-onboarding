@@ -14,16 +14,9 @@ import {
   IconButton,
   Divider,
   Button,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 
-import { CYPRUS_BENEFITS } from './constant';
-
-export const BusinessInfoStep = () => {
-  const theme = useTheme();
-  const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
-
+const PaymentStep = () => {
   const BasicInfo = useCallback(() => {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -127,86 +120,9 @@ export const BusinessInfoStep = () => {
     );
   }, []);
 
-  const CyprusBenefits = useCallback(() => {
-    return (
-      <Box
-        sx={{
-          width: {
-            xs: '100%',
-            md: '48%',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-          }}
-        >
-          <Image
-            style={{
-              objectFit: 'contain',
-              width: '100%',
-              height: 'auto',
-            }}
-            width={1600}
-            height={900}
-            src={'/cyprus-thumb.png'}
-            alt={'cyprus-thumb'}
-          />
-
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: {
-                sx: 'column',
-                md: 'row',
-              },
-              gap: '0.5rem',
-              flexWrap: 'wrap',
-            }}
-          >
-            {CYPRUS_BENEFITS.map((cyprusBenefit, index) => {
-              return (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    gap: {
-                      sx: '0.25rem',
-                      md: '0.5rem',
-                    },
-                    fontSize: '0.75rem',
-                  }}
-                  key={cyprusBenefit}
-                >
-                  <CheckCircleOutlined fontSize="small" color="success" />
-                  <Typography color="white" variant="caption">
-                    {cyprusBenefit}
-                  </Typography>
-                </Box>
-              );
-            })}
-          </Box>
-        </Box>
-      </Box>
-    );
-  }, []);
-
   const BusinessForm = useCallback(() => {
     return (
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          width: {
-            xs: '100%',
-            md: '48%',
-          },
-        }}
-      >
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <Typography variant="h6" color="white">
           Alright, let’s start with some basic information.
         </Typography>
@@ -216,16 +132,16 @@ export const BusinessInfoStep = () => {
           <Divider sx={{ border: '1px dashed rgba(255, 255, 255, 0.25)' }} />
           <ServiceInfo />
         </Box>
-        {!isMobileBreakPoint && <Footer />}
       </Box>
     );
-  }, [isMobileBreakPoint]);
+  }, []);
 
   const Footer = useCallback(() => {
     return (
       <Box
         sx={{
-          flexFlow: 1,
+          width: '100vw',
+          padding: '0 1rem',
           display: 'flex',
           flexDirection: 'column',
           gap: '0.5rem',
@@ -237,7 +153,6 @@ export const BusinessInfoStep = () => {
           sx={{ color: 'white' }}
           variant="contained"
           color="secondary"
-          size={isMobileBreakPoint ? 'medium' : 'large'}
         >
           Continue
         </Button>
@@ -252,22 +167,10 @@ export const BusinessInfoStep = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          padding: '1rem 0',
-          flexDirection: {
-            xs: 'column',
-            md: 'row',
-          },
-          gap: '2rem',
-          justifyContent: 'space-between',
-        }}
-      >
-        <BusinessForm></BusinessForm>
-        <CyprusBenefits />
-        {!!isMobileBreakPoint && <Footer />}
-      </Box>
+      <BusinessForm></BusinessForm>
+      <Footer />
     </>
   );
 };
+
+export default PaymentStep;

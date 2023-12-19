@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 
-export const CompanyPositionStep = () => {
+const CompanyPositionStep = () => {
   const CompanyPositionForm = useCallback(() => {
     return (
       <Box
@@ -59,3 +59,5 @@ export const CompanyPositionStep = () => {
 
   return <CompanyPositionForm />;
 };
+
+export default CompanyPositionStep;
