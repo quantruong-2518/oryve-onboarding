@@ -26,12 +26,14 @@ import CompanyPositionStep from './company-position';
 import SelectPackageStep from './select-package';
 import PaymentStep from './payment';
 import BusinessInfoStep from './business-info';
+import { useSearchParams } from 'next/navigation';
 
 const BusinessPlan = () => {
   // ? Hooks
-  const [activateStep, setActivateStep] = useState<number>(0);
   const theme = useTheme();
   const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
+  const businessParams = useSearchParams();
+  const activateStep = businessParams?.get('step') || '0';
 
   const steps = [
     {
@@ -65,21 +67,21 @@ const BusinessPlan = () => {
         <Stepper currentStep={activateStep} steps={steps} />
       </Box>
     );
-  }, []);
+  }, [activateStep]);
 
   const StepContent = useCallback(() => {
     switch (activateStep) {
-      case 1:
+      case '1':
         return <CompanyPositionStep />;
-      case 2:
+      case '2':
         return <SelectPackageStep />;
-      case 3:
+      case '3':
         return <PaymentStep />;
 
       default:
         return <BusinessInfoStep />;
     }
-  }, []);
+  }, [activateStep]);
 
   const MainContent = useCallback(() => {
     return (
@@ -88,7 +90,7 @@ const BusinessPlan = () => {
         <StepContent />
       </Box>
     );
-  }, []);
+  }, [activateStep]);
 
   // ? Functions
 

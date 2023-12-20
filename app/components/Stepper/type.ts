@@ -3,5 +3,5 @@ export type TProps = {
     name: string;
     icon: any;
   }>;
-  currentStep: number;
+  currentStep: string;
 };

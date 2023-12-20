@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 import React, { useCallback } from 'react';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';

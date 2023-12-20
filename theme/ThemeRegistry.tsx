@@ -45,9 +45,12 @@ const themeOptions: ThemeOptions = {
             borderColor: 'rgba(255, 255, 255, 0.24)',
           },
           '& .MuiOutlinedInput-input': {
-            color: 'rgba(255, 255, 255, 0.8)',
+            color: 'rgba(255, 255, 255)',
           },
           '& .MuiInputLabel-root': {
+            color: 'rgba(255, 255, 255, 0.8)',
+          },
+          '& .MuiInputBase-input': {
             color: 'rgba(255, 255, 255, 0.5)',
           },
         },

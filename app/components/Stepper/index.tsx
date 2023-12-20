@@ -5,14 +5,14 @@ import StepperLine from '../../../assets/icons/stepper-line.svg';
 import styles from './index.module.scss';
 import { TProps } from './type';
 
-export const Stepper = ({ steps, currentStep = 0 }: TProps) => {
+export const Stepper = ({ steps, currentStep = '0' }: TProps) => {
   const theme = useTheme();
   const isMobileBreakPoint = useMediaQuery(theme.breakpoints.down('sm'));
 
   const showStepIdentity = useCallback(
     (stepIndex: number) => {
       if (isMobileBreakPoint) {
-        return currentStep === stepIndex;
+        return +currentStep === stepIndex;
       }
 
       return true;
