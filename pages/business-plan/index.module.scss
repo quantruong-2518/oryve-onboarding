@@ -14,8 +14,8 @@
     padding: 1rem;
 
     @include breakpoint(md) {
-      top: 4rem !important;
-      width: calc(80vw);
+      top: 2rem !important;
+      width: 100vw;
     }
 
     > .header {
@@ -28,6 +28,7 @@
 
       @include breakpoint(md) {
         flex-direction: row;
+        padding: 0 20rem;
       }
     }
   }

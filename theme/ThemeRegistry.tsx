@@ -27,6 +27,9 @@ const themeOptions: ThemeOptions = {
     success: {
       main: '#4BB543',
     },
+    action: {
+      disabled: 'rgba(255, 255, 255, 0.24)',
+    },
   },
   components: {
     MuiDrawer: {
@@ -52,6 +55,9 @@ const themeOptions: ThemeOptions = {
           },
           '& .MuiInputBase-input': {
             color: 'rgba(255, 255, 255, 0.5)',
+          },
+          '& .Mui-disabled': {
+            '-webkit-text-fill-color': 'rgba(255, 255, 255, 1)',
           },
         },
       },
