@@ -269,7 +269,9 @@ const BusinessInfoStep = () => {
           },
           gap: '4rem',
           justifyContent: 'space-between',
-          paddingX: '20rem',
+          paddingX: { 
+            sx: '20rem'
+          },
         }}
       >
         <BusinessForm></BusinessForm>
